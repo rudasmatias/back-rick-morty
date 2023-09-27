@@ -4,16 +4,23 @@ const { Sequelize } = require("sequelize");
 const FavoriteModel = require("./models/Favorite");
 const UserModel = require("./models/User");
 
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
 
 // EJERCICIO 03
 // A la instancia de Sequelize le falta la URL de conexión. ¡Agrégala!
 // Recuerda pasarle la información de tu archivo '.env'.
 
 // URL ----> postgres://DB_USER:DB_PASSWORD@DB_HOST/rickandmorty
+// const sequelize = new Sequelize(
+//   // URL
+//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/rickandmorty`,
+//   { logging: false, native: false }
+// );
+
+//conexión a bd
 const sequelize = new Sequelize(
   // URL
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/rickandmorty`,
+  DB_DEPLOY,
   { logging: false, native: false }
 );
 
